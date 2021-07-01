@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <form [formGroup]="registerForm">
+        <div class="form-group">
+            <label>Start Date of leave</label>
+            <input type="date" class="form-control" formControlName="fromDate" [class.is-invalid]="registerForm.get('fromDate').invalid&&registerForm.get('fromDate').untouched"/>
+        </div>
+        <div class="form-group">
+            <label>Date of leave end</label>
+            <input type="date" class="form-control" formControlName="toDate" [class.is-invalid]="registerForm.get('toDate').invalid&&registerForm.get('toDate').untouched"/>
+        </div>
+        <div class="form-group">
+            <label>Duration of leave</label>
+            <input type="number" class="form-control" formControlName="duration" [class.is-invalid]="registerForm.get('duration').invalid&&registerForm.get('duration').untouched"/>
+        </div>
+        <div class="form-select">
+            <label>Leave Type</label>
+            <select formControlName="leaveType">
+                <option value="Vacation">Vacation</option>
+                <option value="Sick">Sick</option>
+                <option value="Family">Family</option>
+                <option value="Mental_Health">Mental Health</option>
+                <option value="Undisclosed">Other Reasons</option>
+            </select>
+        </div>
+        <div class=form-group>
+            <label>Reason for the leave</label>
+            <input type="text" formControlName="reason" [class.is-invalid]="registerForm.get('reason').invalid&&registerForm.get('reason').untouched"/>
+        </div>
+        <button class="btn btn-primary" [disabled]="!registerForm.valid" (click)="addLeave()">Submit</button>
+    </form>
+</div>

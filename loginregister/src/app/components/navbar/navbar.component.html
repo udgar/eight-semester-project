@@ -1,0 +1,38 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<div id="flipkart-navbar">
+    <div class="container">
+        <div class="row row1">
+            <ul class="largenav pull-right">
+                <li class="upper-links"><a mat-icon-button *ngIf="loggedIn" routerLink="/leave-dashboard">Leave Manage</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                <li class="upper-links"><a mat-icon-button *ngIf="loggedIn" routerLink="/employee-list">List Employee</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                <li class="upper-links" ><a mat-icon-button  *ngIf="loggedIn" routerLink="/add-employee">Add Employee</a> </li>
+                <li class="upper-links"><a mat-icon-button *ngIf="!loggedIn" routerLink="/login">Login</a></li>
+                <li class="upper-links"><a mat-icon-button *ngIf="!loggedIn" routerLink="/register">Register</a> </li>
+                <li class="upper-links"><a mat-icon-button *ngIf="loggedIn">User</a></li>
+                <li class="upper-links"><a mat-icon-button *ngIf="loggedIn" (click)="logOut()">Logout</a></li>
+
+            </ul>
+        </div>
+        <div class="row row2">
+            <div class="col-sm-2">
+                <h2 style="margin:0px;"><span class="smallnav menu">☰ Brand</span></h2>
+                <h1 style="margin:0px;"><span class="largenav">EMSystem</span></h1>
+            </div>
+            <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
+                <div class="row">
+                    <form [formGroup]="registerForm">
+                    <input class="form-control"  placeholder="Search for Employee By their name" formControlName="name">
+                    <button class="flipkart-navbar-button col-xs-1" [disabled]="registerForm.invalid" (click)="searchEmployee()">
+                    </button>
+                </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

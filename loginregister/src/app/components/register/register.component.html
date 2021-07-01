@@ -1,0 +1,35 @@
+<div class="container">
+<div class="row">
+  <form [formGroup]="registerForm">
+      <div class="form-group">
+          <label>UserName</label>
+          <input required type="text" [class.is-invalid]="registerForm.get('userName').invalid&&registerForm.get('userName').touched" class="form-control" formControlName="userName"/>
+          <small [class.d-none]="registerForm.get('userName').valid||registerForm.get('userName').untouched" class="text-danger">
+              **Enter the name
+          </small>
+      </div>
+      <div class="form-group">
+          <label>EmailId</label>
+          <input required [class.is-invalid]="registerForm.get('emailId').invalid&&registerForm.get('emailId').touched" type="text" class="form-control" formControlName="emailId"/>
+          <div *ngIf="registerForm.get('emailId').errors&&(registerForm.get('emailId').invalid&&registerForm.get('emailId').touched)">
+              <small *ngIf="registerForm.get('emailId').errors.required" class="text-danger">**Enter the email</small>
+              <small *ngIf="registerForm.get('emailId').errors.pattern" class="text-danger">**Enter the valid email</small>
+          </div>
+      </div>
+      <div class="form-group">
+          <label>Password</label>
+          <input required type="password" [class.is-invalid]="registerForm.get('password').invalid&&registerForm.get('password').touched" class="form-control" formControlName="password"/>
+          <small [class.d-none]="registerForm.get('password').valid||registerForm.get('password').untouched" class="text-danger">
+              **Enter the password
+          </small>
+      </div>
+      <br>
+      <select class="form-select" formControlName="role">
+          <option value="" selected>Choose the access level</option>
+          <option value="User">User</option>
+          <option value="Admin">Admin</option>
+      </select>
+<br>
+      <button class="btn btn-primary" [disabled]="!registerForm.valid" (click)="addUser()">Submit</button>
+  </form>
+</div></div>

@@ -1,0 +1,60 @@
+<div class="container-fluid">
+<div class="row">
+    <form [formGroup]="registerForm">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" [class.is-invalid]="registerForm.get('name').invalid&&registerForm.get('name').touched" class="form-control" formControlName="name"/>
+            <small [class.d-none]="registerForm.get('name').valid||registerForm.get('name').untouched" class="text-danger">
+                **Enter the name
+            </small>
+        </div>
+        <br>
+        <label> Pick a gender</label>
+        <select class="form-select" formControlName="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+        </select>
+        <br>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input [class.is-invalid]="registerForm.get('email').invalid&&registerForm.get('email').touched" type="text" class="form-control" formControlName="email"/>
+            <div *ngIf="registerForm.get('email').errors&&(registerForm.get('email').invalid&&registerForm.get('email').touched)">
+                <small *ngIf="registerForm.get('email').errors.required" class="text-danger">**Enter the email</small>
+                <small *ngIf="registerForm.get('email').errors.pattern" class="text-danger">**Enter the valid email</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>phoneNumber</label>
+            <input required type="text" [class.is-invalid]="registerForm.get('phoneNumber').invalid&&registerForm.get('phoneNumber').touched" class="form-control" formControlName="phoneNumber"/>
+            <div *ngIf="registerForm.get('phoneNumber').errors&&(registerForm.get('phoneNumber').invalid&&registerForm.get('phoneNumber').touched)">
+                <small *ngIf="registerForm.get('phoneNumber').errors.required" class="text-danger">**Enter the phone number</small>
+                <small *ngIf="registerForm.get('phoneNumber').errors.pattern" class="text-danger">**Enter the valid phone number</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>imageUrl</label>
+            <input type="text" [class.is-invalid]="registerForm.get('imageUrl').invalid&&registerForm.get('imageUrl').touched" class="form-control" formControlName="imageUrl"/>
+        </div>
+        <small class="text-danger" [class.d-none]="registerForm.get('imageUrl').valid||registerForm.get('imageUrl').untouched">
+            **Enter the valid image url 
+        </small>
+        <br>
+        <label> Pick a position</label>
+        <select class="form-select" formControlName="position">
+            <option value="Java_Developer">Java Developer</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Management">Management</option>
+            <option value="System_Engineer">System Engineer</option>
+            <option value="Support_Staff">Support Staff</option>
+            <option value="Help_Desk">Help Desk Staff</option>
+            <option value="Security_Incharge">Security Incharge</option>
+            <option value="Data_Analyst">Data Analyst</option>
+            <option value="Database_Administrator">Database Administrator</option>
+        </select>
+        <br>       
+        <button class="btn btn-primary" [disabled]="!registerForm.valid" (click)="addEmployee()">Submit</button>
+    </form>
+</div>
+</div>
