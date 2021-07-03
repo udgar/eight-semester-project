@@ -3,7 +3,7 @@
     <div *ngIf="employees!=null;then thenBlock;else elseBlock"></div>
     <div class="row">
         <ng-template #thenBlock>
-            <div *ngFor="let employee of employees" [class.selected]="isSelected(employee)">
+            <div *ngFor="let employee of employees">
             <div class="col-md-6 col-xl-3"  >
                 <div class="card m-b-30">
                     <div class="card-body row">
@@ -31,7 +31,7 @@
         </div>
         </ng-template>
 <ng-template #elseBlock>
-    <h2>There are no student present right now</h2>
+    <h2>There are no employee present right now</h2>
 </ng-template>
 
     </div>

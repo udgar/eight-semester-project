@@ -63,8 +63,8 @@ public class EmployeeController {
         return ResponseEntity.status(200).body("");
     }
     
-    @GetMapping("/search-employee")
-    public ResponseEntity<List<Employee>> getSearchedEmployee(String name){
+    @GetMapping("/search-employee/{name}")
+    public ResponseEntity<List<Employee>> getSearchedEmployee(@PathVariable("name")String name){
         List<Employee> employees=employeeService.getSearchedEmployees(name);
         return new ResponseEntity<>(employees,HttpStatus.OK);
     }

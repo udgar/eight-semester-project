@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Employee } from 'src/app/model/employee';
 import { EmployeeServiceService } from 'src/app/service/employee-service.service';
 
@@ -10,13 +10,22 @@ import { EmployeeServiceService } from 'src/app/service/employee-service.service
 })
 export class SearchedEmployeeComponent implements OnInit {
 
-  constructor(private employeeService:EmployeeServiceService,private route:Router) { }
+  constructor(private employeeService:EmployeeServiceService,private route:Router,private activated:ActivatedRoute) { }
   public employees:Employee[]
   public employee:Employee
+  public searchedname:string
 
   ngOnInit(): void {
-  
-    this.employees=this.employeeService.getSearchedEmployee();
+    this.activated.paramMap.subscribe((params:ParamMap)=>{
+      this.searchedname=(params.get('name'))
+  });
+    this.employeeService.getEmployeeByName(this.searchedname).subscribe(data=>{this.employees=data},error=>{alert("The employee/s cannot be found"),
+      this.route.navigate(['employee-list'])
+  });
+
+  this.route.routeReuseStrategy.shouldReuseRoute=()=>{
+    return false;
+  }
   }
 
   update(emp:Employee){

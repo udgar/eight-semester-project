@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'add-employee',component:AddEmployeeComponent,canActivate:[AuthGuardGuard]},
   {path:'employee-details/:id',component:EmployeeDetailsComponent,canActivate:[AuthGuardGuard]},
   {path:'update-employee/:id',component:UpdateEmployeeComponent,canActivate:[AuthGuardGuard]},
-  {path:'searched-employee',component:SearchedEmployeeComponent,canActivate:[AuthGuardGuard]}
+  {path:'searched-employee/:name',component:SearchedEmployeeComponent,canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({

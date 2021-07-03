@@ -33,15 +33,9 @@ export class EmployeeServiceService {
   }
 
   public getEmployeeByName(name:string):Observable<Employee[]>{
-    return this.http.get<Employee[]>("http://localhost:8082/employee/search-employee")
+    return this.http.get<Employee[]>("http://localhost:8082/employee/search-employee/"+name)
   }
 
-  public setSearchedEmployee(employees:Employee[]){
-      this.searchedEmployees=employees
-  }
-  public getSearchedEmployee():Employee[]{
-    return this.searchedEmployees
-  }
 
 
 }

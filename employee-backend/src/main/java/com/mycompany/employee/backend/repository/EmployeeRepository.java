@@ -15,7 +15,7 @@ public interface EmployeeRepository extends JpaRepository<Employee,Integer>{
     
     public List<Employee> findByLeavesIsOnLeaveTrue();
     
-    public List<Employee> findAllByNameEquals(String name);
+    public List<Employee> findByNameContains(String name);
     
     
 }

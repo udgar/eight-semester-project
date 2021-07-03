@@ -21,6 +21,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedIn=this.service.isLoggedIn();
+    this.route.routeReuseStrategy.shouldReuseRoute=()=>{
+      return false;
+    }
   }
   public registerForm=this.formBuilder.group({
     name:['',Validators.required]
@@ -32,9 +35,7 @@ export class NavbarComponent implements OnInit {
   }
   searchEmployee(){
     let name=this.registerForm.get('name').value
-    this.employeeService.getEmployeeByName(name).subscribe(data=>{this.employees=data},error=>alert("Error has occured"))
-    this.employeeService.setSearchedEmployee(this.employees)
-    this.route.navigate(['/searched-employee'])
+    this.route.navigateByUrl('/searched-employee/'+name)
   }
 
 }

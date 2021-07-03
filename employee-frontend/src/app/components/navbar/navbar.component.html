@@ -23,7 +23,7 @@
                 <h2 style="margin:0px;"><span class="smallnav menu">☰ Brand</span></h2>
                 <h1 style="margin:0px;"><span class="largenav">EMSystem</span></h1>
             </div>
-            <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
+            <div *ngIf="loggedIn" class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
                 <div class="row">
                     <form [formGroup]="registerForm">
                     <input class="form-control"  placeholder="Search for Employee By their name" formControlName="name">
